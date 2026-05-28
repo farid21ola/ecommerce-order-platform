@@ -1,0 +1,1 @@
+DROP INDEX IF EXISTS idx_notification_tasks_event_id_unique;

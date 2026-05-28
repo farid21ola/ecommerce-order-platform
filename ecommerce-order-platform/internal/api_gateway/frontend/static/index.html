@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>None Market</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">NM</span>
+        <span>
+          <strong>None Market</strong>
+          <small>demo commerce</small>
+        </span>
+      </a>
+      <nav>
+        <a href="#catalog">Каталог</a>
+        <a href="#checkout">Оформление</a>
+        <a href="#tracking">Статус</a>
+      </nav>
+    </header>
+
+    <main>
+      <div id="notificationToast" class="toast" role="status" aria-live="polite" hidden>
+        <span>Уведомление</span>
+        <strong id="notificationTitle">Заказ завершён</strong>
+        <small id="notificationText"></small>
+      </div>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="promo">Kafka Saga checkout</span>
+          <h1>Упрощенный магазин для проверки заказа</h1>
+          <p>Выберите товар, оплату и наблюдайте, как заказ проходит склад, оплату, доставку, уведомления.</p>
+        </div>
+      </section>
+
+      <section id="catalog" class="catalog">
+        <div class="section-head">
+          <span>Каталог</span>
+          <h2>Популярные товары</h2>
+        </div>
+
+        <div class="products">
+          <article class="product selected" data-sku="SKU-001" data-name="Urban Backpack" data-price="1000">
+            <div class="product-art">
+              <img src="/assets/images/backpack.webp" alt="Urban Backpack" />
+            </div>
+            <div class="product-body">
+              <span class="stock in-stock">В наличии</span>
+              <h3>Urban Backpack</h3>
+              <p>Повседневный рюкзак для ноутбука и коротких поездок.</p>
+              <div class="product-foot">
+                <strong>1 000 ₽</strong>
+                <button type="button" class="select-product">Выбрать</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-sku="SKU-002" data-name="Travel Mug" data-price="1000">
+            <div class="product-art">
+              <img src="/assets/images/mug.webp" alt="Travel Mug" />
+            </div>
+            <div class="product-body">
+              <span class="stock out-stock">Нет в наличии</span>
+              <h3>Travel Mug</h3>
+              <p>Термокружка для сценария недостатка товара на складе.</p>
+              <div class="product-foot">
+                <strong>1 000 ₽</strong>
+                <button type="button" class="select-product">Выбрать</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form id="orderForm" class="checkout panel">
+          <div class="section-head compact">
+            <span id="checkout">Checkout</span>
+            <h2>Оформление заказа</h2>
+          </div>
+
+          <div class="cart-line">
+            <div>
+              <span class="muted">Товар</span>
+              <strong id="selectedName">Urban Backpack</strong>
+              <small id="selectedSku">SKU-001</small>
+            </div>
+            <strong id="selectedPrice">1 000 ₽</strong>
+          </div>
+
+          <label>
+            Количество
+            <input id="quantity" name="quantity" type="number" min="1" value="1" />
+          </label>
+
+          <label>
+            Сценарий оплаты
+            <select id="paymentScenario" name="paymentScenario">
+              <option value="success">Оплатить успешно</option>
+              <option value="fail">Отклонить оплату</option>
+            </select>
+          </label>
+
+          <label>
+            Адрес доставки
+            <textarea id="deliveryAddress" name="deliveryAddress" rows="3" required>Moscow, UI street, 1</textarea>
+          </label>
+
+          <div class="summary">
+            <span>Итого</span>
+            <strong id="summaryTotal">1 000 ₽</strong>
+          </div>
+
+          <button id="createButton" type="submit">Создать заказ</button>
+          <p id="formMessage" class="message"></p>
+        </form>
+
+        <section id="tracking" class="panel tracking">
+          <div class="section-head compact">
+            <span>Tracking</span>
+            <h2>Статус заказа</h2>
+          </div>
+
+          <div id="statusBadge" class="status waiting">WAITING</div>
+
+          <div class="status-grid">
+            <div><span>Оплата</span><strong id="paymentStatus">—</strong></div>
+            <div><span>Доставка</span><strong id="deliveryStatus">—</strong></div>
+            <div><span>Сумма</span><strong id="totalAmount">—</strong></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel orders-panel">
+        <div class="history-head">
+          <div class="section-head compact">
+            <span>Orders</span>
+            <h2>Мои заказы</h2>
+          </div>
+          <button id="refreshOrdersButton" class="secondary" type="button">Обновить список</button>
+        </div>
+        <div id="ordersList" class="orders-list"></div>
+      </section>
+
+      <section class="panel history-panel">
+        <div class="history-head">
+          <div class="section-head compact">
+            <span>Events</span>
+            <h2>История обработки</h2>
+          </div>
+          <button id="refreshButton" class="secondary" type="button">Обновить</button>
+        </div>
+        <ol id="history" class="timeline"></ol>
+      </section>
+    </main>
+
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

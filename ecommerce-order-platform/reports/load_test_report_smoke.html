@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Отчёт нагрузочного тестирования</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #f8fafc; color: #111827; }
+    main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0; }
+    .hero, section { background: white; border: 1px solid #e5e7eb; border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 50px rgba(15,23,42,.06); }
+    h1 { margin: 0 0 8px; font-size: 42px; letter-spacing: -.04em; }
+    h2 { margin: 0 0 16px; }
+    h3 { margin: 20px 0 10px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .metric { background: #f1f5f9; border-radius: 16px; padding: 16px; }
+    .metric span { display: block; color: #64748b; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    .metric strong { display: block; margin-top: 8px; font-size: 28px; }
+    svg { width: 100%; height: auto; background: #f8fafc; border-radius: 16px; padding: 12px; }
+    .chart-canvas-wrap { height: 380px; background: #f8fafc; border-radius: 16px; padding: 16px; }
+    .chart-title { font-size: 18px; font-weight: 800; fill: #111827; }
+    .axis-label { font-size: 13px; font-weight: 700; fill: #475569; }
+    .axis-line { stroke: #334155; stroke-width: 2; }
+    .value-label { font-size: 13px; font-weight: 800; fill: #111827; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { border-bottom: 1px solid #e5e7eb; padding: 10px; text-align: left; }
+    th { color: #475569; font-size: 12px; text-transform: uppercase; }
+    @media (max-width: 760px) { .metrics { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <h1>Отчёт нагрузочного тестирования</h1>
+    <p>Сформирован: 2026-05-09 20:07:45. API: http://localhost:8080</p>
+    <div class="metrics">
+      <div class="metric"><span>Всего запросов</span><strong>5</strong></div>
+      <div class="metric"><span>Создано заказов</span><strong>5</strong></div>
+      <div class="metric"><span>Параллельность</span><strong>2</strong></div>
+      <div class="metric"><span>Средняя задержка HTTP</span><strong>6.3 мс</strong></div>
+      <div class="metric"><span>Среднее время заказа</span><strong>696 мс</strong></div>
+      <div class="metric"><span>Все заказы обработаны за</span><strong>1.19 с</strong></div>
+    </div>
+  </div>
+
+  <section><h3>HTTP-статусы</h3>
+<svg viewBox='0 0 760 300' role='img'>
+<text x='0' y='24' class='chart-title'>HTTP-статусы</text>
+<text x='0' y='80' class='axis-label'>201</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>5</text>
+</svg></section>
+  <section><h3>Финальные статусы заказов</h3>
+<svg viewBox='0 0 760 300' role='img'>
+<text x='0' y='24' class='chart-title'>Финальные статусы заказов</text>
+<text x='0' y='80' class='axis-label'>Завершён</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>2</text>
+<text x='0' y='122' class='axis-label'>Отменён</text>
+<rect x='160' y='100' width='284' height='28' rx='8' fill='#ea580c'></rect>
+<text x='452' y='120' class='value-label'>1</text>
+<text x='0' y='164' class='axis-label'>Ошибка</text>
+<rect x='160' y='142' width='568' height='28' rx='8' fill='#2563eb'></rect>
+<text x='736' y='162' class='value-label'>2</text>
+</svg></section>
+  <section><h3>Статусы оплаты</h3>
+<svg viewBox='0 0 760 300' role='img'>
+<text x='0' y='24' class='chart-title'>Статусы оплаты</text>
+<text x='0' y='80' class='axis-label'>null</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>2</text>
+<text x='0' y='122' class='axis-label'>Завершён</text>
+<rect x='160' y='100' width='568' height='28' rx='8' fill='#ea580c'></rect>
+<text x='736' y='120' class='value-label'>2</text>
+<text x='0' y='164' class='axis-label'>Ошибка</text>
+<rect x='160' y='142' width='284' height='28' rx='8' fill='#2563eb'></rect>
+<text x='452' y='162' class='value-label'>1</text>
+</svg></section>
+  <section><h3>События в историях заказов</h3>
+<svg viewBox='0 0 760 658' role='img'>
+<text x='0' y='24' class='chart-title'>События в историях заказов</text>
+<text x='0' y='80' class='axis-label'>OrderCreated</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>5</text>
+<text x='0' y='122' class='axis-label'>NotificationSent</text>
+<rect x='160' y='100' width='568' height='28' rx='8' fill='#ea580c'></rect>
+<text x='736' y='120' class='value-label'>5</text>
+<text x='0' y='164' class='axis-label'>StockReserved</text>
+<rect x='160' y='142' width='340' height='28' rx='8' fill='#2563eb'></rect>
+<text x='508' y='162' class='value-label'>3</text>
+<text x='0' y='206' class='axis-label'>PaymentRequested</text>
+<rect x='160' y='184' width='340' height='28' rx='8' fill='#9333ea'></rect>
+<text x='508' y='204' class='value-label'>3</text>
+<text x='0' y='248' class='axis-label'>PaymentCompleted</text>
+<rect x='160' y='226' width='227' height='28' rx='8' fill='#b91c1c'></rect>
+<text x='395' y='246' class='value-label'>2</text>
+<text x='0' y='290' class='axis-label'>DeliveryRequested</text>
+<rect x='160' y='268' width='227' height='28' rx='8' fill='#15803d'></rect>
+<text x='395' y='288' class='value-label'>2</text>
+<text x='0' y='332' class='axis-label'>DeliveryCreated</text>
+<rect x='160' y='310' width='227' height='28' rx='8' fill='#0f766e'></rect>
+<text x='395' y='330' class='value-label'>2</text>
+<text x='0' y='374' class='axis-label'>OrderCompleted</text>
+<rect x='160' y='352' width='227' height='28' rx='8' fill='#ea580c'></rect>
+<text x='395' y='372' class='value-label'>2</text>
+<text x='0' y='416' class='axis-label'>StockReservationFailed</text>
+<rect x='160' y='394' width='227' height='28' rx='8' fill='#2563eb'></rect>
+<text x='395' y='414' class='value-label'>2</text>
+<text x='0' y='458' class='axis-label'>OrderFailed</text>
+<rect x='160' y='436' width='227' height='28' rx='8' fill='#9333ea'></rect>
+<text x='395' y='456' class='value-label'>2</text>
+<text x='0' y='500' class='axis-label'>PaymentFailed</text>
+<rect x='160' y='478' width='113' height='28' rx='8' fill='#b91c1c'></rect>
+<text x='281' y='498' class='value-label'>1</text>
+<text x='0' y='542' class='axis-label'>ReleaseStockRequested</text>
+<rect x='160' y='520' width='113' height='28' rx='8' fill='#15803d'></rect>
+<text x='281' y='540' class='value-label'>1</text>
+<text x='0' y='584' class='axis-label'>OrderCancelled</text>
+<rect x='160' y='562' width='113' height='28' rx='8' fill='#0f766e'></rect>
+<text x='281' y='582' class='value-label'>1</text>
+<text x='0' y='626' class='axis-label'>StockReleased</text>
+<rect x='160' y='604' width='113' height='28' rx='8' fill='#ea580c'></rect>
+<text x='281' y='624' class='value-label'>1</text>
+</svg></section>
+  <section><h3>Распределение задержки HTTP</h3>
+<svg viewBox='0 0 760 300' role='img'>
+<text x='0' y='24' class='chart-title'>Распределение задержки HTTP</text>
+<text x='0' y='80' class='axis-label'>&lt;50ms</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>5</text>
+<text x='0' y='122' class='axis-label'>50-100ms</text>
+<rect x='160' y='100' width='0' height='28' rx='8' fill='#ea580c'></rect>
+<text x='168' y='120' class='value-label'>0</text>
+<text x='0' y='164' class='axis-label'>100-250ms</text>
+<rect x='160' y='142' width='0' height='28' rx='8' fill='#2563eb'></rect>
+<text x='168' y='162' class='value-label'>0</text>
+<text x='0' y='206' class='axis-label'>250-500ms</text>
+<rect x='160' y='184' width='0' height='28' rx='8' fill='#9333ea'></rect>
+<text x='168' y='204' class='value-label'>0</text>
+<text x='0' y='248' class='axis-label'>&gt;=500ms</text>
+<rect x='160' y='226' width='0' height='28' rx='8' fill='#b91c1c'></rect>
+<text x='168' y='246' class='value-label'>0</text>
+</svg></section>
+  <section>
+<h3>Время выполнения заказа</h3>
+<div class="chart-canvas-wrap">
+  <canvas id="orderDurationChart"></canvas>
+</div>
+<script>
+(() => {
+  const ctx = document.getElementById('orderDurationChart');
+  const points = [{"x": 0, "y": 0}, {"x": 200, "y": 2}, {"x": 700, "y": 1}, {"x": 1200, "y": 2}];
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      datasets: [{
+        label: 'Количество заказов',
+        data: points,
+        borderColor: '#2563eb',
+        backgroundColor: '#2563eb',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        borderWidth: 3,
+        tension: 0,
+        fill: false,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      parsing: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: (items) => `Время: ${formatDuration(items[0].parsed.x)}`,
+            label: (item) => `Заказов: ${item.parsed.y}`,
+          },
+        },
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          min: 0,
+          max: 1200,
+          title: { display: true, text: 'Время выполнения' },
+          ticks: {
+            stepSize: 200,
+            callback: (value) => formatDuration(value),
+          },
+        },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: 'Количество заказов' },
+          ticks: { precision: 0 },
+        },
+      },
+    },
+  });
+
+  function formatDuration(ms) {
+    if (ms >= 1000) {
+      const seconds = ms / 1000;
+      return Number.isInteger(seconds) ? `${seconds}с` : `${seconds.toFixed(1)}с`;
+    }
+    return `${Math.round(ms)}мс`;
+  }
+})();
+</script></section>
+
+  <section>
+    <h2>План и факт запросов</h2>
+    <table><thead><tr><th>Сценарий</th><th>SKU</th><th>Сценарий оплаты</th><th>Запланировано</th><th>Фактически</th></tr></thead><tbody><tr><td>Товар 1, оплата успешна</td><td>SKU-001</td><td>Успешная</td><td>2</td><td>2</td></tr><tr><td>Товар 1, ошибка оплаты</td><td>SKU-001</td><td>Ошибка</td><td>1</td><td>1</td></tr><tr><td>Товар 2, оплата успешна</td><td>SKU-002</td><td>Успешная</td><td>1</td><td>1</td></tr><tr><td>Товар 2, ошибка оплаты</td><td>SKU-002</td><td>Ошибка</td><td>1</td><td>1</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Разбивка по сценариям</h2>
+    <table><thead><tr><th>Сценарий</th><th>Финальный статус</th><th>Количество</th></tr></thead><tbody><tr><td>Товар 1, оплата успешна</td><td>Завершён</td><td>2</td></tr><tr><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>1</td></tr><tr><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>1</td></tr><tr><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>1</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Остатки после теста</h2>
+    <table><thead><tr><th>SKU</th><th>Доступно</th><th>Зарезервировано</th></tr></thead><tbody><tr><td>SKU-001</td><td>240</td><td>1791</td></tr><tr><td>SKU-002</td><td>0</td><td>0</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Пример созданных заказов</h2>
+    <table><thead><tr><th>ID заказа</th><th>Сценарий</th><th>Статус заказа</th><th>Статус оплаты</th><th>Статус доставки</th><th>Сумма</th></tr></thead><tbody><tr><td>bbb565b5-1172-41b6-94b6-fb5b8c9f0f86</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>3b583914-70ef-401c-8d13-7b7dc7fabc94</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>cf32c5c3-574e-4e3a-90e7-813905301a88</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>9b22d46b-885b-4929-b64f-2b53556a7aef</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>9edbfcd7-de4f-4f4f-83aa-65e849eafff9</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Время выполнения заказов</h2>
+    <table><thead><tr><th>ID заказа</th><th>Сценарий</th><th>Финальный статус</th><th>Финальное событие</th><th>Длительность, мс</th></tr></thead><tbody><tr><td>bbb565b5-1172-41b6-94b6-fb5b8c9f0f86</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1176</td></tr><tr><td>3b583914-70ef-401c-8d13-7b7dc7fabc94</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1191</td></tr><tr><td>cf32c5c3-574e-4e3a-90e7-813905301a88</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>692</td></tr><tr><td>9b22d46b-885b-4929-b64f-2b53556a7aef</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>198</td></tr><tr><td>9edbfcd7-de4f-4f4f-83aa-65e849eafff9</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>OrderFailed</td><td>222</td></tr></tbody></table>
+  </section>
+</main>
+</body>
+</html>

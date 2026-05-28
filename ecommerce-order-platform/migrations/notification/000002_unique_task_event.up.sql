@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX idx_notification_tasks_event_id_unique ON notification_tasks(event_id);

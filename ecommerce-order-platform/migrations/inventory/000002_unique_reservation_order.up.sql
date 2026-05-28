@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX idx_stock_reservations_order_id_unique ON stock_reservations(order_id);

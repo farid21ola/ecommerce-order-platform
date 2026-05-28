@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Отчёт нагрузочного тестирования</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #f8fafc; color: #111827; }
+    main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0; }
+    .hero, section { background: white; border: 1px solid #e5e7eb; border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 50px rgba(15,23,42,.06); }
+    h1 { margin: 0 0 8px; font-size: 42px; letter-spacing: -.04em; }
+    h2 { margin: 0 0 16px; }
+    h3 { margin: 20px 0 10px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .metric { background: #f1f5f9; border-radius: 16px; padding: 16px; }
+    .metric span { display: block; color: #64748b; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    .metric strong { display: block; margin-top: 8px; font-size: 28px; }
+    svg { width: 100%; height: auto; background: #f8fafc; border-radius: 16px; padding: 12px; }
+    .chart-canvas-wrap { height: 380px; background: #f8fafc; border-radius: 16px; padding: 16px; }
+    .chart-title { font-size: 18px; font-weight: 800; fill: #111827; }
+    .axis-label { font-size: 13px; font-weight: 700; fill: #475569; }
+    .axis-line { stroke: #334155; stroke-width: 2; }
+    .value-label { font-size: 13px; font-weight: 800; fill: #111827; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { border-bottom: 1px solid #e5e7eb; padding: 10px; text-align: left; }
+    th { color: #475569; font-size: 12px; text-transform: uppercase; }
+    @media (max-width: 760px) { .metrics { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <h1>Отчёт нагрузочного тестирования</h1>
+    <p>Сформирован: 2026-05-09 20:00:18. API: http://localhost:8080</p>
+    <div class="metrics">
+      <div class="metric"><span>Всего запросов</span><strong>45</strong></div>
+      <div class="metric"><span>Создано заказов</span><strong>45</strong></div>
+      <div class="metric"><span>Параллельность</span><strong>10</strong></div>
+      <div class="metric"><span>Средняя задержка HTTP</span><strong>7.9 мс</strong></div>
+      <div class="metric"><span>Среднее время заказа</span><strong>1188 мс</strong></div>
+      <div class="metric"><span>Все заказы обработаны за</span><strong>1.65 с</strong></div>
+    </div>
+  </div>
+
+  <section><h3>HTTP-статусы</h3>
+<svg viewBox='0 0 760 300' role='img'>
+<text x='0' y='24' class='chart-title'>HTTP-статусы</text>
+<text x='0' y='80' class='axis-label'>201</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>45</text>
+</svg></section>
+  <section><h3>Финальные статусы заказов</h3>
+<svg viewBox='0 0 760 300' role='img'>
+<text x='0' y='24' class='chart-title'>Финальные статусы заказов</text>
+<text x='0' y='80' class='axis-label'>Завершён</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>20</text>
+<text x='0' y='122' class='axis-label'>Отменён</text>
+<rect x='160' y='100' width='284' height='28' rx='8' fill='#ea580c'></rect>
+<text x='452' y='120' class='value-label'>10</text>
+<text x='0' y='164' class='axis-label'>Ошибка</text>
+<rect x='160' y='142' width='426' height='28' rx='8' fill='#2563eb'></rect>
+<text x='594' y='162' class='value-label'>15</text>
+</svg></section>
+  <section><h3>Статусы оплаты</h3>
+<svg viewBox='0 0 760 300' role='img'>
+<text x='0' y='24' class='chart-title'>Статусы оплаты</text>
+<text x='0' y='80' class='axis-label'>null</text>
+<rect x='160' y='58' width='426' height='28' rx='8' fill='#0f766e'></rect>
+<text x='594' y='78' class='value-label'>15</text>
+<text x='0' y='122' class='axis-label'>Завершён</text>
+<rect x='160' y='100' width='568' height='28' rx='8' fill='#ea580c'></rect>
+<text x='736' y='120' class='value-label'>20</text>
+<text x='0' y='164' class='axis-label'>Ошибка</text>
+<rect x='160' y='142' width='284' height='28' rx='8' fill='#2563eb'></rect>
+<text x='452' y='162' class='value-label'>10</text>
+</svg></section>
+  <section><h3>События в историях заказов</h3>
+<svg viewBox='0 0 760 658' role='img'>
+<text x='0' y='24' class='chart-title'>События в историях заказов</text>
+<text x='0' y='80' class='axis-label'>OrderCreated</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>45</text>
+<text x='0' y='122' class='axis-label'>NotificationSent</text>
+<rect x='160' y='100' width='568' height='28' rx='8' fill='#ea580c'></rect>
+<text x='736' y='120' class='value-label'>45</text>
+<text x='0' y='164' class='axis-label'>StockReserved</text>
+<rect x='160' y='142' width='378' height='28' rx='8' fill='#2563eb'></rect>
+<text x='546' y='162' class='value-label'>30</text>
+<text x='0' y='206' class='axis-label'>PaymentRequested</text>
+<rect x='160' y='184' width='378' height='28' rx='8' fill='#9333ea'></rect>
+<text x='546' y='204' class='value-label'>30</text>
+<text x='0' y='248' class='axis-label'>PaymentCompleted</text>
+<rect x='160' y='226' width='252' height='28' rx='8' fill='#b91c1c'></rect>
+<text x='420' y='246' class='value-label'>20</text>
+<text x='0' y='290' class='axis-label'>DeliveryRequested</text>
+<rect x='160' y='268' width='252' height='28' rx='8' fill='#15803d'></rect>
+<text x='420' y='288' class='value-label'>20</text>
+<text x='0' y='332' class='axis-label'>DeliveryCreated</text>
+<rect x='160' y='310' width='252' height='28' rx='8' fill='#0f766e'></rect>
+<text x='420' y='330' class='value-label'>20</text>
+<text x='0' y='374' class='axis-label'>OrderCompleted</text>
+<rect x='160' y='352' width='252' height='28' rx='8' fill='#ea580c'></rect>
+<text x='420' y='372' class='value-label'>20</text>
+<text x='0' y='416' class='axis-label'>StockReservationFailed</text>
+<rect x='160' y='394' width='189' height='28' rx='8' fill='#2563eb'></rect>
+<text x='357' y='414' class='value-label'>15</text>
+<text x='0' y='458' class='axis-label'>OrderFailed</text>
+<rect x='160' y='436' width='189' height='28' rx='8' fill='#9333ea'></rect>
+<text x='357' y='456' class='value-label'>15</text>
+<text x='0' y='500' class='axis-label'>PaymentFailed</text>
+<rect x='160' y='478' width='126' height='28' rx='8' fill='#b91c1c'></rect>
+<text x='294' y='498' class='value-label'>10</text>
+<text x='0' y='542' class='axis-label'>ReleaseStockRequested</text>
+<rect x='160' y='520' width='126' height='28' rx='8' fill='#15803d'></rect>
+<text x='294' y='540' class='value-label'>10</text>
+<text x='0' y='584' class='axis-label'>OrderCancelled</text>
+<rect x='160' y='562' width='126' height='28' rx='8' fill='#0f766e'></rect>
+<text x='294' y='582' class='value-label'>10</text>
+<text x='0' y='626' class='axis-label'>StockReleased</text>
+<rect x='160' y='604' width='126' height='28' rx='8' fill='#ea580c'></rect>
+<text x='294' y='624' class='value-label'>10</text>
+</svg></section>
+  <section><h3>Распределение задержки HTTP</h3>
+<svg viewBox='0 0 760 300' role='img'>
+<text x='0' y='24' class='chart-title'>Распределение задержки HTTP</text>
+<text x='0' y='80' class='axis-label'>&lt;50ms</text>
+<rect x='160' y='58' width='568' height='28' rx='8' fill='#0f766e'></rect>
+<text x='736' y='78' class='value-label'>45</text>
+<text x='0' y='122' class='axis-label'>50-100ms</text>
+<rect x='160' y='100' width='0' height='28' rx='8' fill='#ea580c'></rect>
+<text x='168' y='120' class='value-label'>0</text>
+<text x='0' y='164' class='axis-label'>100-250ms</text>
+<rect x='160' y='142' width='0' height='28' rx='8' fill='#2563eb'></rect>
+<text x='168' y='162' class='value-label'>0</text>
+<text x='0' y='206' class='axis-label'>250-500ms</text>
+<rect x='160' y='184' width='0' height='28' rx='8' fill='#9333ea'></rect>
+<text x='168' y='204' class='value-label'>0</text>
+<text x='0' y='248' class='axis-label'>&gt;=500ms</text>
+<rect x='160' y='226' width='0' height='28' rx='8' fill='#b91c1c'></rect>
+<text x='168' y='246' class='value-label'>0</text>
+</svg></section>
+  <section>
+<h3>Время выполнения заказа</h3>
+<div class="chart-canvas-wrap">
+  <canvas id="orderDurationChart"></canvas>
+</div>
+<script>
+(() => {
+  const ctx = document.getElementById('orderDurationChart');
+  const points = [{"x": 0, "y": 0}, {"x": 700, "y": 4}, {"x": 800, "y": 8}, {"x": 900, "y": 3}, {"x": 1100, "y": 5}, {"x": 1200, "y": 5}, {"x": 1400, "y": 5}, {"x": 1500, "y": 9}, {"x": 1600, "y": 6}];
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      datasets: [{
+        label: 'Количество заказов',
+        data: points,
+        borderColor: '#2563eb',
+        backgroundColor: '#2563eb',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        borderWidth: 3,
+        tension: 0,
+        fill: false,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      parsing: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: (items) => `Время: ${formatDuration(items[0].parsed.x)}`,
+            label: (item) => `Заказов: ${item.parsed.y}`,
+          },
+        },
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          min: 0,
+          max: 1600,
+          title: { display: true, text: 'Время выполнения' },
+          ticks: {
+            stepSize: 500,
+            callback: (value) => formatDuration(value),
+          },
+        },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: 'Количество заказов' },
+          ticks: { precision: 0 },
+        },
+      },
+    },
+  });
+
+  function formatDuration(ms) {
+    if (ms >= 1000) {
+      const seconds = ms / 1000;
+      return Number.isInteger(seconds) ? `${seconds}с` : `${seconds.toFixed(1)}с`;
+    }
+    return `${Math.round(ms)}мс`;
+  }
+})();
+</script></section>
+
+  <section>
+    <h2>План и факт запросов</h2>
+    <table><thead><tr><th>Сценарий</th><th>SKU</th><th>Сценарий оплаты</th><th>Запланировано</th><th>Фактически</th></tr></thead><tbody><tr><td>Товар 1, оплата успешна</td><td>SKU-001</td><td>Успешная</td><td>20</td><td>20</td></tr><tr><td>Товар 1, ошибка оплаты</td><td>SKU-001</td><td>Ошибка</td><td>10</td><td>10</td></tr><tr><td>Товар 2, оплата успешна</td><td>SKU-002</td><td>Успешная</td><td>10</td><td>10</td></tr><tr><td>Товар 2, ошибка оплаты</td><td>SKU-002</td><td>Ошибка</td><td>5</td><td>5</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Разбивка по сценариям</h2>
+    <table><thead><tr><th>Сценарий</th><th>Финальный статус</th><th>Количество</th></tr></thead><tbody><tr><td>Товар 1, оплата успешна</td><td>Завершён</td><td>20</td></tr><tr><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>10</td></tr><tr><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>10</td></tr><tr><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>5</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Остатки после теста</h2>
+    <table><thead><tr><th>SKU</th><th>Доступно</th><th>Зарезервировано</th></tr></thead><tbody><tr><td>SKU-001</td><td>642</td><td>1389</td></tr><tr><td>SKU-002</td><td>0</td><td>0</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Пример созданных заказов</h2>
+    <table><thead><tr><th>ID заказа</th><th>Сценарий</th><th>Статус заказа</th><th>Статус оплаты</th><th>Статус доставки</th><th>Сумма</th></tr></thead><tbody><tr><td>5b728282-6fc8-4e39-b454-524d17c04847</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>57ccef08-f1bf-4e8d-8cb6-f7c611f9db12</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>d5ae5d69-43c0-4561-bf41-4ab523ed670c</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>519a1d2a-f01d-4b4b-82e1-7f50e2de313c</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>7035094e-1c03-4c6b-a0ad-26b82f365ccc</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>e0419d64-3cb5-4bb5-8093-f5603637fef0</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>76bc8c9c-bc64-4330-a450-245ca7c15e09</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>1b60d3f9-54ac-4cdb-ac3f-d730f286bcbb</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>f5a365e6-0546-41ee-ae82-6dd2ccf7df45</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>c5e189c1-d7c7-475c-8b11-0b9fb3d918ca</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>757c8360-49b8-4b49-b8b3-9e4f792ac096</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>e9bddc33-1486-4a4c-a207-4613e628a753</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>6806f51e-5419-43f7-b543-793c44faf6f4</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>5b5d1b7a-37ab-431d-a653-053720276556</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>c7f4b2fd-017b-4bb1-950d-3356eebd4925</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>03ee7c6e-3767-4da1-8e71-70e8056485cd</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>256a524d-2d2f-4d0a-ab9b-2d7da393d72a</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>6f200525-d4d7-4bc7-a2df-255def3eb8b8</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>52f134bf-263b-40ad-8def-5c1b46ec02b3</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>5e3edd7e-e543-4072-b911-9795dc489a2a</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>5c467884-9ed8-418e-8d41-baef086fc46b</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>0330c16e-fb02-49f1-892f-047e031a95a2</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>Завершён</td><td>Создан</td><td>1000</td></tr><tr><td>b863d658-c28f-4b9a-86fb-a7081b14f4b9</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>326e2ff7-43f1-43a5-b2d9-1771d33b7c9c</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>59067dc6-3e0e-4b2d-a05d-7d5e28ee98a7</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>dacfe620-8180-4bd6-8136-b584510eaa2f</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>96098b0a-741a-46b1-8c7b-56d532bb20cb</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>63c60a38-138b-40c5-bd48-d8d33412134c</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>af33785f-b1b3-44fa-9fb0-842525c4ac55</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>4053f868-78ac-4239-9a40-e03f52aaf666</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>0d279cff-d69c-4e07-8351-c030926f911b</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>972bac0a-9ef0-4c0f-973f-35c6e9d498c9</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>b98a6480-ae5a-4dfe-b477-9b4cc5d81bde</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>ac71dad9-522d-4a3e-b785-1cfda376b2dd</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>d23588d5-b450-4ea5-a425-4cb0045c5cf1</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>2aa75485-9ac8-4fc4-b733-a305a35c666b</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>Ошибка</td><td>null</td><td>1000</td></tr><tr><td>87c77731-c069-444f-8b94-fd537f6a916f</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>ab51c9f5-b962-48e7-bc13-bdfb386291e7</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>176ad873-ab03-4ab0-a13f-b342f2028980</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>42f97b3e-c58a-4c8e-b43c-69d6cfda49e4</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>4fbfc0ec-e344-477f-963c-d0713c49e304</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>92ded050-fb25-4eb6-a53e-4cdb7364b622</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>1f7db5ae-1ddb-495d-9532-fe2172a0bab0</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>4f8be62e-f092-459f-993b-5fa48408c680</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr><tr><td>ea43b45d-3b95-4186-b633-411bfc1169ed</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>null</td><td>null</td><td>1000</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Время выполнения заказов</h2>
+    <table><thead><tr><th>ID заказа</th><th>Сценарий</th><th>Финальный статус</th><th>Финальное событие</th><th>Длительность, мс</th></tr></thead><tbody><tr><td>5b728282-6fc8-4e39-b454-524d17c04847</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1376</td></tr><tr><td>57ccef08-f1bf-4e8d-8cb6-f7c611f9db12</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1414</td></tr><tr><td>d5ae5d69-43c0-4561-bf41-4ab523ed670c</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1437</td></tr><tr><td>519a1d2a-f01d-4b4b-82e1-7f50e2de313c</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1474</td></tr><tr><td>7035094e-1c03-4c6b-a0ad-26b82f365ccc</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1510</td></tr><tr><td>e0419d64-3cb5-4bb5-8093-f5603637fef0</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1449</td></tr><tr><td>76bc8c9c-bc64-4330-a450-245ca7c15e09</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1485</td></tr><tr><td>1b60d3f9-54ac-4cdb-ac3f-d730f286bcbb</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1393</td></tr><tr><td>f5a365e6-0546-41ee-ae82-6dd2ccf7df45</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1498</td></tr><tr><td>c5e189c1-d7c7-475c-8b11-0b9fb3d918ca</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1508</td></tr><tr><td>757c8360-49b8-4b49-b8b3-9e4f792ac096</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1461</td></tr><tr><td>e9bddc33-1486-4a4c-a207-4613e628a753</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1518</td></tr><tr><td>6806f51e-5419-43f7-b543-793c44faf6f4</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1532</td></tr><tr><td>5b5d1b7a-37ab-431d-a653-053720276556</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1544</td></tr><tr><td>c7f4b2fd-017b-4bb1-950d-3356eebd4925</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1556</td></tr><tr><td>03ee7c6e-3767-4da1-8e71-70e8056485cd</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1083</td></tr><tr><td>256a524d-2d2f-4d0a-ab9b-2d7da393d72a</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1594</td></tr><tr><td>6f200525-d4d7-4bc7-a2df-255def3eb8b8</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1607</td></tr><tr><td>52f134bf-263b-40ad-8def-5c1b46ec02b3</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1629</td></tr><tr><td>5e3edd7e-e543-4072-b911-9795dc489a2a</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1123</td></tr><tr><td>5c467884-9ed8-418e-8d41-baef086fc46b</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1582</td></tr><tr><td>0330c16e-fb02-49f1-892f-047e031a95a2</td><td>Товар 1, оплата успешна</td><td>Завершён</td><td>OrderCompleted</td><td>1569</td></tr><tr><td>b863d658-c28f-4b9a-86fb-a7081b14f4b9</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1111</td></tr><tr><td>326e2ff7-43f1-43a5-b2d9-1771d33b7c9c</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1135</td></tr><tr><td>59067dc6-3e0e-4b2d-a05d-7d5e28ee98a7</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1146</td></tr><tr><td>dacfe620-8180-4bd6-8136-b584510eaa2f</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1158</td></tr><tr><td>96098b0a-741a-46b1-8c7b-56d532bb20cb</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1170</td></tr><tr><td>63c60a38-138b-40c5-bd48-d8d33412134c</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1204</td></tr><tr><td>af33785f-b1b3-44fa-9fb0-842525c4ac55</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1191</td></tr><tr><td>4053f868-78ac-4239-9a40-e03f52aaf666</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>722</td></tr><tr><td>0d279cff-d69c-4e07-8351-c030926f911b</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>671</td></tr><tr><td>972bac0a-9ef0-4c0f-973f-35c6e9d498c9</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>757</td></tr><tr><td>b98a6480-ae5a-4dfe-b477-9b4cc5d81bde</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>684</td></tr><tr><td>ac71dad9-522d-4a3e-b785-1cfda376b2dd</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>746</td></tr><tr><td>d23588d5-b450-4ea5-a425-4cb0045c5cf1</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>768</td></tr><tr><td>2aa75485-9ac8-4fc4-b733-a305a35c666b</td><td>Товар 1, ошибка оплаты</td><td>Отменён</td><td>OrderCancelled</td><td>1226</td></tr><tr><td>87c77731-c069-444f-8b94-fd537f6a916f</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>779</td></tr><tr><td>ab51c9f5-b962-48e7-bc13-bdfb386291e7</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>OrderFailed</td><td>790</td></tr><tr><td>176ad873-ab03-4ab0-a13f-b342f2028980</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>802</td></tr><tr><td>42f97b3e-c58a-4c8e-b43c-69d6cfda49e4</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>815</td></tr><tr><td>4fbfc0ec-e344-477f-963c-d0713c49e304</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>OrderFailed</td><td>828</td></tr><tr><td>92ded050-fb25-4eb6-a53e-4cdb7364b622</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>OrderFailed</td><td>861</td></tr><tr><td>1f7db5ae-1ddb-495d-9532-fe2172a0bab0</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>OrderFailed</td><td>839</td></tr><tr><td>4f8be62e-f092-459f-993b-5fa48408c680</td><td>Товар 2, оплата успешна</td><td>Ошибка</td><td>OrderFailed</td><td>850</td></tr><tr><td>ea43b45d-3b95-4186-b633-411bfc1169ed</td><td>Товар 2, ошибка оплаты</td><td>Ошибка</td><td>OrderFailed</td><td>873</td></tr></tbody></table>
+  </section>
+</main>
+</body>
+</html>

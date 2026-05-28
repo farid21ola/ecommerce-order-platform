@@ -1,0 +1,1 @@
+DROP INDEX IF EXISTS idx_stock_reservations_order_id_unique;

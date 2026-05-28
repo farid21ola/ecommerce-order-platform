@@ -1,0 +1,261 @@
+{
+  "generated_at": "2026-05-09T20:07:45",
+  "api_url": "http://localhost:8080",
+  "concurrency": 2,
+  "wait_seconds": 8,
+  "summary": {
+    "total_requests": 5,
+    "created_orders": 5,
+    "avg_http_latency_ms": 6.258441600948572,
+    "avg_order_duration_ms": 695.9152,
+    "total_processing_time_ms": 1190.904,
+    "total_processing_time_label": "1.19 с"
+  },
+  "counts": {
+    "http_statuses": {
+      "201": 5
+    },
+    "final_order_statuses": {
+      "CANCELLED": 1,
+      "COMPLETED": 2,
+      "FAILED": 2
+    },
+    "payment_statuses": {
+      "COMPLETED": 2,
+      "FAILED": 1,
+      "NULL": 2
+    },
+    "events": {
+      "OrderCreated": 5,
+      "NotificationSent": 5,
+      "StockReserved": 3,
+      "PaymentRequested": 3,
+      "PaymentCompleted": 2,
+      "DeliveryRequested": 2,
+      "DeliveryCreated": 2,
+      "OrderCompleted": 2,
+      "StockReservationFailed": 2,
+      "OrderFailed": 2,
+      "PaymentFailed": 1,
+      "ReleaseStockRequested": 1,
+      "OrderCancelled": 1,
+      "StockReleased": 1
+    },
+    "requests_by_scenario": {
+      "fail-payment-sku1": 1,
+      "fail-payment-sku2": 1,
+      "success-sku1": 2,
+      "success-sku2": 1
+    }
+  },
+  "latency_buckets": {
+    "<50ms": 5,
+    "50-100ms": 0,
+    "100-250ms": 0,
+    "250-500ms": 0,
+    ">=500ms": 0
+  },
+  "request_plan_actual": [
+    {
+      "scenario": "success-sku1",
+      "scenario_label": "Товар 1, оплата успешна",
+      "sku": "SKU-001",
+      "payment_scenario": "success",
+      "planned_requests": 2,
+      "actual_requests": 2
+    },
+    {
+      "scenario": "fail-payment-sku1",
+      "scenario_label": "Товар 1, ошибка оплаты",
+      "sku": "SKU-001",
+      "payment_scenario": "fail",
+      "planned_requests": 1,
+      "actual_requests": 1
+    },
+    {
+      "scenario": "success-sku2",
+      "scenario_label": "Товар 2, оплата успешна",
+      "sku": "SKU-002",
+      "payment_scenario": "success",
+      "planned_requests": 1,
+      "actual_requests": 1
+    },
+    {
+      "scenario": "fail-payment-sku2",
+      "scenario_label": "Товар 2, ошибка оплаты",
+      "sku": "SKU-002",
+      "payment_scenario": "fail",
+      "planned_requests": 1,
+      "actual_requests": 1
+    }
+  ],
+  "scenario_breakdown": [
+    {
+      "scenario": "fail-payment-sku1",
+      "scenario_label": "Товар 1, ошибка оплаты",
+      "final_status": "CANCELLED",
+      "final_status_label": "Отменён",
+      "count": 1
+    },
+    {
+      "scenario": "fail-payment-sku2",
+      "scenario_label": "Товар 2, ошибка оплаты",
+      "final_status": "FAILED",
+      "final_status_label": "Ошибка",
+      "count": 1
+    },
+    {
+      "scenario": "success-sku1",
+      "scenario_label": "Товар 1, оплата успешна",
+      "final_status": "COMPLETED",
+      "final_status_label": "Завершён",
+      "count": 2
+    },
+    {
+      "scenario": "success-sku2",
+      "scenario_label": "Товар 2, оплата успешна",
+      "final_status": "FAILED",
+      "final_status_label": "Ошибка",
+      "count": 1
+    }
+  ],
+  "order_duration_chart": {
+    "bucket_ms": 100,
+    "x_max_ms": 1200,
+    "x_step_ms": 200,
+    "points": [
+      {
+        "x": 0,
+        "y": 0
+      },
+      {
+        "x": 200,
+        "y": 2
+      },
+      {
+        "x": 700,
+        "y": 1
+      },
+      {
+        "x": 1200,
+        "y": 2
+      }
+    ]
+  },
+  "order_durations": [
+    {
+      "order_id": "bbb565b5-1172-41b6-94b6-fb5b8c9f0f86",
+      "scenario": "success-sku1",
+      "final_status": "COMPLETED",
+      "final_event": "OrderCompleted",
+      "duration_ms": 1175.755
+    },
+    {
+      "order_id": "3b583914-70ef-401c-8d13-7b7dc7fabc94",
+      "scenario": "success-sku1",
+      "final_status": "COMPLETED",
+      "final_event": "OrderCompleted",
+      "duration_ms": 1190.894
+    },
+    {
+      "order_id": "cf32c5c3-574e-4e3a-90e7-813905301a88",
+      "scenario": "fail-payment-sku1",
+      "final_status": "CANCELLED",
+      "final_event": "OrderCancelled",
+      "duration_ms": 692.419
+    },
+    {
+      "order_id": "9b22d46b-885b-4929-b64f-2b53556a7aef",
+      "scenario": "success-sku2",
+      "final_status": "FAILED",
+      "final_event": "OrderFailed",
+      "duration_ms": 198.219
+    },
+    {
+      "order_id": "9edbfcd7-de4f-4f4f-83aa-65e849eafff9",
+      "scenario": "fail-payment-sku2",
+      "final_status": "FAILED",
+      "final_event": "OrderFailed",
+      "duration_ms": 222.289
+    }
+  ],
+  "inventory": [
+    {
+      "sku": "SKU-001",
+      "available": 240,
+      "reserved": 1791
+    },
+    {
+      "sku": "SKU-002",
+      "available": 0,
+      "reserved": 0
+    }
+  ],
+  "orders_sample": [
+    {
+      "order_id": "bbb565b5-1172-41b6-94b6-fb5b8c9f0f86",
+      "customer_id": "load-report-success-sku1-1-1778346457685",
+      "order_status": "COMPLETED",
+      "payment_status": "COMPLETED",
+      "delivery_status": "CREATED",
+      "total_amount": 1000,
+      "created_at": "2026-05-09T17:07:37.687862Z",
+      "updated_at": "2026-05-09T17:07:39.351363Z",
+      "scenario": "success-sku1",
+      "sku": "SKU-001",
+      "payment_scenario": "success"
+    },
+    {
+      "order_id": "3b583914-70ef-401c-8d13-7b7dc7fabc94",
+      "customer_id": "load-report-success-sku1-2-1778346457685",
+      "order_status": "COMPLETED",
+      "payment_status": "COMPLETED",
+      "delivery_status": "CREATED",
+      "total_amount": 1000,
+      "created_at": "2026-05-09T17:07:37.687872Z",
+      "updated_at": "2026-05-09T17:07:39.36492Z",
+      "scenario": "success-sku1",
+      "sku": "SKU-001",
+      "payment_scenario": "success"
+    },
+    {
+      "order_id": "cf32c5c3-574e-4e3a-90e7-813905301a88",
+      "customer_id": "load-report-fail-payment-sku1-1-1778346457696",
+      "order_status": "CANCELLED",
+      "payment_status": "FAILED",
+      "delivery_status": null,
+      "total_amount": 1000,
+      "created_at": "2026-05-09T17:07:37.696782Z",
+      "updated_at": "2026-05-09T17:07:38.893254Z",
+      "scenario": "fail-payment-sku1",
+      "sku": "SKU-001",
+      "payment_scenario": "fail"
+    },
+    {
+      "order_id": "9b22d46b-885b-4929-b64f-2b53556a7aef",
+      "customer_id": "load-report-success-sku2-1-1778346457696",
+      "order_status": "FAILED",
+      "payment_status": null,
+      "delivery_status": null,
+      "total_amount": 1000,
+      "created_at": "2026-05-09T17:07:37.696783Z",
+      "updated_at": "2026-05-09T17:07:38.383311Z",
+      "scenario": "success-sku2",
+      "sku": "SKU-002",
+      "payment_scenario": "success"
+    },
+    {
+      "order_id": "9edbfcd7-de4f-4f4f-83aa-65e849eafff9",
+      "customer_id": "load-report-fail-payment-sku2-1-1778346457699",
+      "order_status": "FAILED",
+      "payment_status": null,
+      "delivery_status": null,
+      "total_amount": 1000,
+      "created_at": "2026-05-09T17:07:37.699547Z",
+      "updated_at": "2026-05-09T17:07:38.400135Z",
+      "scenario": "fail-payment-sku2",
+      "sku": "SKU-002",
+      "payment_scenario": "fail"
+    }
+  ]
+}

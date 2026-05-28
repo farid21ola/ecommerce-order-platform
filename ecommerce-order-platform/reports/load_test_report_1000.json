@@ -1,0 +1,185 @@
+{
+  "generated_at": "2026-05-09T20:20:26",
+  "api_url": "http://localhost:8080",
+  "concurrency": 50,
+  "wait_seconds": 100,
+  "summary": {
+    "total_requests": 1000,
+    "created_orders": 1000,
+    "avg_http_latency_ms": 17.732267475978006,
+    "avg_order_duration_ms": 19222.581897,
+    "total_processing_time_ms": 28663.768,
+    "total_processing_time_label": "28.66 с"
+  },
+  "counts": {
+    "http_statuses": {
+      "201": 1000
+    },
+    "final_order_statuses": {
+      "CANCELLED": 300,
+      "COMPLETED": 400,
+      "FAILED": 300
+    },
+    "payment_statuses": {
+      "COMPLETED": 400,
+      "FAILED": 300,
+      "NULL": 300
+    },
+    "events": {
+      "OrderCreated": 1000,
+      "NotificationSent": 1000,
+      "StockReserved": 700,
+      "PaymentRequested": 700,
+      "PaymentCompleted": 400,
+      "DeliveryRequested": 400,
+      "DeliveryCreated": 400,
+      "OrderCompleted": 400,
+      "PaymentFailed": 300,
+      "ReleaseStockRequested": 300,
+      "OrderCancelled": 300,
+      "StockReleased": 300,
+      "StockReservationFailed": 300,
+      "OrderFailed": 300
+    },
+    "requests_by_scenario": {
+      "fail-payment-sku1": 300,
+      "fail-payment-sku2": 100,
+      "success-sku1": 400,
+      "success-sku2": 200
+    }
+  },
+  "latency_buckets": {
+    "<50ms": 951,
+    "50-100ms": 49,
+    "100-250ms": 0,
+    "250-500ms": 0,
+    ">=500ms": 0
+  },
+  "request_plan_actual": [
+    {
+      "scenario": "success-sku1",
+      "scenario_label": "Товар 1, оплата успешна",
+      "sku": "SKU-001",
+      "payment_scenario": "success",
+      "planned_requests": 400,
+      "actual_requests": 400
+    },
+    {
+      "scenario": "fail-payment-sku1",
+      "scenario_label": "Товар 1, ошибка оплаты",
+      "sku": "SKU-001",
+      "payment_scenario": "fail",
+      "planned_requests": 300,
+      "actual_requests": 300
+    },
+    {
+      "scenario": "success-sku2",
+      "scenario_label": "Товар 2, оплата успешна",
+      "sku": "SKU-002",
+      "payment_scenario": "success",
+      "planned_requests": 200,
+      "actual_requests": 200
+    },
+    {
+      "scenario": "fail-payment-sku2",
+      "scenario_label": "Товар 2, ошибка оплаты",
+      "sku": "SKU-002",
+      "payment_scenario": "fail",
+      "planned_requests": 100,
+      "actual_requests": 100
+    }
+  ],
+  "scenario_breakdown": [
+    {
+      "scenario": "fail-payment-sku1",
+      "scenario_label": "Товар 1, ошибка оплаты",
+      "final_status": "CANCELLED",
+      "final_status_label": "Отменён",
+      "count": 300
+    },
+    {
+      "scenario": "fail-payment-sku2",
+      "scenario_label": "Товар 2, ошибка оплаты",
+      "final_status": "FAILED",
+      "final_status_label": "Ошибка",
+      "count": 100
+    },
+    {
+      "scenario": "success-sku1",
+      "scenario_label": "Товар 1, оплата успешна",
+      "final_status": "COMPLETED",
+      "final_status_label": "Завершён",
+      "count": 400
+    },
+    {
+      "scenario": "success-sku2",
+      "scenario_label": "Товар 2, оплата успешна",
+      "final_status": "FAILED",
+      "final_status_label": "Ошибка",
+      "count": 200
+    }
+  ],
+  "order_duration_chart": {
+    "bucket_ms": 2000,
+    "x_max_ms": 28000,
+    "x_step_ms": 5000,
+    "points": [
+      {
+        "x": 0,
+        "y": 0
+      },
+      {
+        "x": 8000,
+        "y": 1
+      },
+      {
+        "x": 10000,
+        "y": 163
+      },
+      {
+        "x": 12000,
+        "y": 136
+      },
+      {
+        "x": 16000,
+        "y": 19
+      },
+      {
+        "x": 18000,
+        "y": 164
+      },
+      {
+        "x": 20000,
+        "y": 117
+      },
+      {
+        "x": 22000,
+        "y": 18
+      },
+      {
+        "x": 24000,
+        "y": 89
+      },
+      {
+        "x": 26000,
+        "y": 166
+      },
+      {
+        "x": 28000,
+        "y": 127
+      }
+    ]
+  },
+  "inventory": [
+    {
+      "sku": "SKU-001",
+      "available": 600,
+      "reserved": 400
+    },
+    {
+      "sku": "SKU-002",
+      "available": 0,
+      "reserved": 0
+    }
+  ]
+}
